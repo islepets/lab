@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление звоков</title>
+</head>
+<body>
+<h1>Удалить звонок</h1>
+<p>Вы уверены, что хотите удалить звонок от {{ call.phone_number }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Да</button>
+</form>
+<a href="{% url 'call_list' %}">Отмена</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список звонков</title>
+</head>
+<body>
+<h1>Звонки</h1>
+<a href="{% url 'call_create' %}">Добавить звонок</a>
+<table border="1">
+    <tr>
+        <th>Телефон</th>
+        <th>Клиент</th>
+        <th>Причина</th>
+        <th>Оператор</th>
+        <th>Статус</th>
+        <th>Дата и время</th>
+        <th>Решена проблема</th>
+        <th>Действия</th>
+    </tr>
+    {% for call in calls %}
+    <tr>
+        <td>{{ call.phone_number }}</td>
+        <td>{{ call.client.name }}</td>
+        <td>{{ call.reason.description }}</td>
+        <td>{{ call.operator.name }}</td>
+        <td>{{ call.status.description }}</td>
+        <td>{{ call.date_time }}</td>
+        <td>{{ call.problem_resolved }}</td>
+        <td>
+            <a href="{% url 'call_update' call.pk %}">Редактировать</a>
+            <a href="{% url 'call_delete' call.pk %}">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
