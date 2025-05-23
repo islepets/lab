@@ -1,0 +1,17 @@
+<!-- templates/calls/reason_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление причины</title>
+</head>
+<body>
+<h1>Удалить причину</h1>
+<p>Вы уверены, что хотите удалить причину "{{ reason.description }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Да</button>
+</form>
+<a href="{% url 'reason_list' %}">Отмена</a>
+</body>
+</html>

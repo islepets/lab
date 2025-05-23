@@ -1,0 +1,34 @@
+<!-- templates/calls/operator_list.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Операторы</title>
+</head>
+<body>
+<h1>Операторы</h1>
+<a href="{% url 'operator_create' %}">Добавить оператора</a>
+<a href="{% url 'home' %}">На главную</a>
+<table border="1">
+    <tr>
+        <th>Имя</th>
+        <th>Email</th>
+        <th>Действия</th>
+    </tr>
+    {% for operator in operators %}
+    <tr>
+        <td>{{ operator.name }}</td>
+        <td>{{ operator.email }}</td>
+        <td>
+            {% if perms.calls.change_call %}
+            <a href="{% url 'call_update' call.pk %}">Редактировать</a>
+            {% endif %}
+            {% if perms.calls.delete_call %}
+            <a href="{% url 'call_delete' call.pk %}">Удалить</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

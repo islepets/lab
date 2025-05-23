@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>Звонки</h1>
-<a href="{% url 'call_create' %}">Добавить звонок</a>
+<a href="{% url 'call_create' %}">Добавить звоки</a>
+<a href="{% url 'home' %}">На главную</a>
 <table border="1">
     <tr>
         <th>Телефон</th>
@@ -28,8 +29,12 @@
         <td>{{ call.date_time }}</td>
         <td>{{ call.problem_resolved }}</td>
         <td>
+            {% if perms.calls.change_call %}
             <a href="{% url 'call_update' call.pk %}">Редактировать</a>
+            {% endif %}
+            {% if perms.calls.delete_call %}
             <a href="{% url 'call_delete' call.pk %}">Удалить</a>
+            {% endif %}
         </td>
     </tr>
     {% endfor %}
