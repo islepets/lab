@@ -21,10 +21,10 @@
         <td>{{ operator.email }}</td>
         <td>
             {% if perms.calls.change_call %}
-            <a href="{% url 'call_update' call.pk %}">Редактировать</a>
+            <a href="{% url 'operator_update' operator.pk %}">Редактировать</a>
             {% endif %}
             {% if perms.calls.delete_call %}
-            <a href="{% url 'call_delete' call.pk %}">Удалить</a>
+            <a href="{% url 'operator_delete' operator.pk %}">Удалить</a>
             {% endif %}
         </td>
     </tr>
